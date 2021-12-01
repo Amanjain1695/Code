@@ -7,7 +7,7 @@
   ],
   "name": "Tract 29 Nov 2021 2nd Test Git",
   "namespace": "TRACT3",
-  "oauthLocalPort" : "1919",
+  "oauthLocalPort" : "1717",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "52.0"
 }
