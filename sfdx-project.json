@@ -2,16 +2,12 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true,
-      "package": "myPkgAlias",
-      "versionName": "1.0.0",
-      "versionNumber": "1.0.0.NEXT",
+      "default": true
     }
   ],
-  "namespace": "",
+  "name": "Tract 29 Nov 2021 2nd Test Git",
+  "namespace": "TRACT3",
+  "oauthLocalPort" : "1919",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "45.0",
-  "packageAliases": {
-    "myPkgAlias": "0Ho000000000000001"
-  }
+  "sourceApiVersion": "52.0"
 }
