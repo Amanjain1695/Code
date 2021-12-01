@@ -3,9 +3,15 @@
     {
       "path": "force-app",
       "default": true
+      "package": "myPkgAlias",
+      "versionName": "1.0.0",
+      "versionNumber": "1.0.0.NEXT",
     }
   ],
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "45.0"
+  "sourceApiVersion": "45.0",
+  "packageAliases": {
+    "myPkgAlias": "0Ho000000000000001"
+  }
 }
