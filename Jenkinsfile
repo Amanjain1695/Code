@@ -1,7 +1,7 @@
 #!groovy
 
 import groovy.json.JsonSlurperClassic
-image: salesforce/salesforcedx
+
 node {
 
     def SF_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
@@ -24,7 +24,12 @@ node {
     stage('checkout source') {
         checkout scm
     }
-
+image: salesforce/salesforcedx
+    pipelines:
+        default:
+        - Step:
+        script:
+        - sfdx force --help
 
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
