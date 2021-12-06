@@ -26,7 +26,7 @@ node {
     }
 image: salesforce/salesforcedx
     pipelines:
-        default:
+       
         - Step:
         script:
         - sfdx force --help
