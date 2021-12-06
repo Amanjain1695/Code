@@ -27,7 +27,11 @@ node {
 image: salesforce/salesforcedx
     pipelines:
         script:
-       
+        stage('Test') {
+            steps {
+               rc = command "$sfdx version"
+            }
+        }
 
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
@@ -41,11 +45,7 @@ image: salesforce/salesforcedx
             // -------------------------------------------------------------------------
             // Authorize the Dev Hub org with JWT key and give it an alias.
             // -------------------------------------------------------------------------
-            stage('Test') {
-            steps {
-                sh 'sfdx version'
-            }
-        }
+           
             stage('Authorize DevHub') {
                 rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
