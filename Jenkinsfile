@@ -3,7 +3,7 @@
 import groovy.json.JsonSlurperClassic
 
 node {
-
+    
     def SF_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
     def SF_USERNAME=env.HUB_ORG_DH
     def SERVER_KEY_CREDENTALS_ID=env.JWT_CRED_ID_DH
@@ -22,7 +22,9 @@ node {
     stage('checkout source') {
         checkout scm
     }
-
+agent {
+        docker { image 'salesforce/salesforcedx:latest-slim' }
+    }
 
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
@@ -32,7 +34,13 @@ node {
     withEnv(["HOME=${env.WORKSPACE}"]) {
         
         withCredentials([file(credentialsId: SERVER_KEY_CREDENTALS_ID, variable: 'server_key_file')]) {
-
+            stages {
+        stage('Test') {
+            steps {
+                sh 'sfdx --version'
+            }
+        }
+    }
             // -------------------------------------------------------------------------
             // Authorize the Dev Hub org with JWT key and give it an alias.
             // -------------------------------------------------------------------------
