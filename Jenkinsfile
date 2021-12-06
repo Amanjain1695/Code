@@ -1,4 +1,5 @@
-image: salesforce/salesforcedx
+def call() {
+    image: salesforce/salesforcedx
     pipelines:
         script:
         stage('Test') {
@@ -6,3 +7,4 @@ image: salesforce/salesforcedx
                rc = command "$sfdx version"
             
         }
+}
