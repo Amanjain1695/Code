@@ -47,7 +47,7 @@ node {
             // -------------------------------------------------------------------------
             
             stage('Authorize DevHub') {
-                rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg"
+                rc = command "${toolbelt} sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
                     error 'Salesforce dev hub org authorization failed.'
                 }
@@ -59,7 +59,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Create Test Scratch Org') {
-                rc = command "${toolbelt}/sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1"
+                rc = command "${toolbelt} sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 1"
                 if (rc != 0) {
                     error 'Salesforce test scratch org creation failed.'
                 }
@@ -71,7 +71,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Display Test Scratch Org') {
-                rc = command "${toolbelt}/sfdx force:org:display"
+                rc = command "${toolbelt} sfdx force:org:display"
                 if (rc != 0) {
                     error 'Salesforce test scratch org display failed.'
                 }
@@ -83,7 +83,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Push To Test Scratch Org') {
-                rc = command "${toolbelt}/sfdx force:source:push"
+                rc = command "${toolbelt} sfdx force:source:push"
                 if (rc != 0) {
                     error 'Salesforce push to test scratch org failed.'
                 }
@@ -95,7 +95,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Run Tests In Test Scratch Org') {
-                rc = command "${toolbelt}/sfdx force:apex:test:run --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+                rc = command "${toolbelt} sfdx force:apex:test:run --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
                 if (rc != 0) {
                     error 'Salesforce unit test run in test scratch org failed.'
                 }
