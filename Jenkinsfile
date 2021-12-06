@@ -27,7 +27,7 @@ node {
 image: salesforce/salesforcedx
     pipelines:
         script:
-        - sfdx force --help
+       
 
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
