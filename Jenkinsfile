@@ -18,9 +18,9 @@ node {
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
-    agent {
+    
         docker { image 'salesforce/salesforcedx:latest-full' }
-    }
+   
     stage('checkout source') {
         checkout scm
     }
