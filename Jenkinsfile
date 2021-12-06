@@ -2,9 +2,10 @@ pipeline {
     agent {
         docker {
             image 'curlybracket/salesforce:latest'
-            echo "inside docker"
+           
         }
     }
+     echo "inside docker"
     stage('Add other packages') {
     echo "Installing A"
     timeout(900) {
@@ -17,9 +18,9 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo"Inside Stage"
+                
                 sh 'node --version'
             }
         }
-    }
+    }echo"Inside Stage"
 }
