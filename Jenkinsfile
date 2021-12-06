@@ -32,11 +32,20 @@ node {
     withEnv(["HOME=${env.WORKSPACE}"]) {
         
         withCredentials([file(credentialsId: SERVER_KEY_CREDENTALS_ID, variable: 'server_key_file')]) {
-
+            // -------------------------------------------------------------------------
+            // Check versioof cli
+            // -------------------------------------------------------------------------
+              
+            stage('Sfdxcli version') {
+                rc = command "${toolbelt}/sfdx version"
+                if (rc != 0) {
+                    error 'Salesforce installation failed.'
+                }
+            }
             // -------------------------------------------------------------------------
             // Authorize the Dev Hub org with JWT key and give it an alias.
             // -------------------------------------------------------------------------
-
+            
             stage('Authorize DevHub') {
                 rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
