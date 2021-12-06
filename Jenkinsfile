@@ -13,14 +13,13 @@ node {
     def SF_INSTANCE_URL = env.SFDC_HOST_DH ?: "https://login.salesforce.com"
 
     def toolbelt = tool 'toolbelt'
-   
+     docker.dockerfile('salesforce/salesforcedx:latest-full')
 
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
     
-        docker { image 'salesforce/salesforcedx:latest-full' }
-   
+        
     stage('checkout source') {
         checkout scm
     }
