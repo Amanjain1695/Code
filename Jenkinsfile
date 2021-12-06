@@ -37,7 +37,7 @@ node {
             // -------------------------------------------------------------------------
               
             stage('Sfdxcli version') {
-                rc = command "${toolbelt}/sfdx version"
+                rc = command "${toolbelt} sfdx version"
                 if (rc != 0) {
                     error 'Salesforce installation failed.'
                 }
