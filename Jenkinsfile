@@ -4,6 +4,14 @@ pipeline {
             image 'curlybracket/salesforce:latest'
         }
     }
+    stage('Add other packages') {
+    echo "Installing A"
+    timeout(900) {
+        waitUntil {
+            sh "sfdx force:package:install --package --wait 15"
+        }
+    }
+    echo "A installed"
     environment {
         SF_CONSUMER_KEY='env.CONNECTED_APP_CONSUMER_KEY_DH'
     SF_USERNAME='env.HUB_ORG_DH'
