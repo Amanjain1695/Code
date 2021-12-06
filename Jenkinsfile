@@ -1,6 +1,8 @@
 pipeline {
     agent {
-        docker { image 'salesforce/salesforcedx:latest-rc-slim' }
+        docker {
+            image 'curlybracket/salesforce:latest'
+        }
     }
     stages {
         stage('Test') {
