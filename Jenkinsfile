@@ -1,7 +1,7 @@
 #!groovy
 
 import groovy.json.JsonSlurperClassic
-
+image: salesforce/salesforcedx:latest-full
 node {
 
     def SF_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
@@ -13,7 +13,8 @@ node {
     def SF_INSTANCE_URL = env.SFDC_HOST_DH ?: "https://login.salesforce.com"
 
     def toolbelt = tool 'toolbelt'
-     docker.dockerfile('salesforce/salesforcedx:latest-full')
+    
+    
 
     // -------------------------------------------------------------------------
     // Check out code from source control.
