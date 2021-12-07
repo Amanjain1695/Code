@@ -32,7 +32,7 @@ pipeline {
                               agent {
                                     docker {
                                             reuseNode true
-                                            image ''salesforce/salesforcedx:latest-full''
+                                            image 'salesforce/salesforcedx:latest-full'
                                            }
                                     }
                               steps {
