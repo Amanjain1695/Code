@@ -22,7 +22,12 @@ pipeline {
             // -------------------------------------------------------------------------
             // Authorize the Dev Hub org with JWT key and give it an alias.
             // -------------------------------------------------------------------------
-       
+       stage('Version Check1') {
+                              steps {
+                                echo "Running the Version Check"
+                                sh 'sfdx version'
+                              }
+                 }
        stage('Authorize DevHub') {
                               steps {
                                 echo "Authorize DevHub"
