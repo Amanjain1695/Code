@@ -1,15 +1,13 @@
 pipeline {
          agent any
-         stages {
-         
-                 
-                 stage('One') {
-                 agent {
+         agent {
                                     docker {
                                             reuseNode true
                                             image 'salesforce/salesforcedx:latest-full'
                                            }
                                     }
+         stages {
+                 stage('One') {
                               steps {
                                 echo "Running the integration test..."
                                 sh 'sfdx version'
