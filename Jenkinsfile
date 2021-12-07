@@ -7,12 +7,6 @@ pipeline {
                  }
                  }
                  stage('Two') {
-                   agent {
-                                    docker {
-                                            reuseNode true
-                                            image 'ubuntu'
-                                           }
-                                    }
                  steps {
                     input('Do you want to proceed?')
                  }
@@ -38,11 +32,12 @@ pipeline {
                               agent {
                                     docker {
                                             reuseNode true
-                                            image 'ubuntu'
+                                            image ''salesforce/salesforcedx:latest-full''
                                            }
                                     }
                               steps {
                                 echo "Running the integration test..."
+                                sh 'sfdx version'
                               }
                            }
                            }
