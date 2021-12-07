@@ -26,7 +26,7 @@ pipeline {
        stage('Authorize DevHub') {
                               steps {
                                 echo "Authorize DevHub"
-                                sh 'sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg'
+                                sh 'sfdx force:auth:jwt:grant --instanceurl https://login.salesforce.com --clientid 3MVG9pRzvMkjMb6nKN_QGvi32g_ZANpKZaYFpiOoonEynTpKJXumZp439yEPg0zccOkWGAVleKqNImUq5ZCqu --username ratneshkumar1166@gmail.com --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg'
                               }
                  }
        
