@@ -15,18 +15,5 @@ pipeline {
                                 sh 'sfdx version'
                               }
                  }
-                
-               //  stage('Four') {
-               //  parallel { 
-               //             stage('Unit Test') {
-                 //          steps {
-                 //               echo "Running the unit test..."
-                   ///        }
-                      //     }
-                        //    stage('Integration test') {
-                    //          
-                    //       }
-                      //     }
-                        //   }
          }
 }
