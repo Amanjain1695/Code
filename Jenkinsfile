@@ -7,6 +7,12 @@ pipeline {
                  }
                  }
                  stage('Two') {
+                   agent {
+                                    docker {
+                                            reuseNode true
+                                            image 'ubuntu'
+                                           }
+                                    }
                  steps {
                     input('Do you want to proceed?')
                  }
