@@ -1,3 +1,6 @@
+  #!groovy
+
+import groovy.json.JsonSlurperClassic
 
 
 pipeline {
@@ -9,10 +12,7 @@ pipeline {
                                            }
                                     }
    
-    #!groovy
-
-import groovy.json.JsonSlurperClassic
-
+  
 node {
 
     def SF_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
